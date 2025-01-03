@@ -1,0 +1,4 @@
+student = {"Name": "Alice", "Age": 20, "Grade": "A"}
+print("Student's name:", student["Name"])
+student["Grade"] = "A+"
+print("Updated student dictionary:", student)
