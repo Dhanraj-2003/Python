@@ -1,0 +1,14 @@
+#fibonacci.py
+def fibonacci(n):
+    fib_seq = [0, 1]
+    for i in range(2, n):
+        fib_seq.append(fib_seq[-1] + fib_seq[-2])
+    return fib_seq
+
+
+#import fibonaci to another file
+from fibonacci import fibonacci
+
+n = int(input("Enter the number of Fibonacci terms: "))
+print("Fibonacci sequence:", fibonacci(n))
+
