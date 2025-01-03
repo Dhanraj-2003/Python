@@ -1,0 +1,13 @@
+import pandas as pd
+import numpy as np
+
+# Pandas example
+data = {'Name': [input("Enter name 1: "), input("Enter name 2: ")], 
+        'Age': [int(input("Enter age 1: ")), int(input("Enter age 2: "))]}
+df = pd.DataFrame(data)
+print("DataFrame:\n", df)
+
+# NumPy example
+arr = np.array([int(input(f"Enter number {i+1}: ")) for i in range(5)])
+print("Numpy array:", arr)
+print("Mean of array:", np.mean(arr))
