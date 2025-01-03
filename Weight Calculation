@@ -1,0 +1,4 @@
+chassis_weight = float(input("Enter chassis weight (kg): "))
+engine_weight = float(input("Enter engine weight (kg): "))
+total_weight = chassis_weight + engine_weight
+print("Total motorbike weight:", total_weight, "kg")
