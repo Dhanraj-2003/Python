@@ -1,0 +1,119 @@
+import pygame
+import random
+
+# Initialize Pygame
+pygame.init()
+
+# Screen dimensions
+WIDTH, HEIGHT = 800, 600
+
+# Colors
+WHITE = (255, 255, 255)
+BLACK = (0, 0, 0)
+RED = (255, 0, 0)
+BLUE = (0, 0, 255)
+GRAY = (119, 118, 110)
+
+# Screen setup
+screen = pygame.display.set_mode((WIDTH, HEIGHT))
+pygame.display.set_caption("Car Race Game")
+
+# Clock
+clock = pygame.time.Clock()
+
+# Load assets
+car_width = 50
+car_height = 100
+car_image = pygame.image.load("car.png")  # Use any car image and place it in the same directory
+car_image = pygame.transform.scale(car_image, (car_width, car_height))
+
+# Functions
+def draw_car(x, y):
+    screen.blit(car_image, (x, y))
+
+def draw_obstacle(obs_x, obs_y, obs_width, obs_height):
+    pygame.draw.rect(screen, RED, [obs_x, obs_y, obs_width, obs_height])
+
+def display_message(text, size, color, x, y):
+    font = pygame.font.Font(None, size)
+    message = font.render(text, True, color)
+    screen.blit(message, (x, y))
+
+# Main game loop
+def game_loop():
+    # Car position
+    x = WIDTH // 2 - car_width // 2
+    y = HEIGHT - car_height - 20
+    x_change = 0
+
+    # Obstacle position
+    obs_x = random.randint(0, WIDTH - 100)
+    obs_y = -200
+    obs_width = 100
+    obs_height = 100
+    obs_speed = 5
+
+    # Score
+    score = 0
+
+    running = True
+    while running:
+        screen.fill(GRAY)  # Background color
+
+        # Event handling
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                running = False
+            if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_LEFT:
+                    x_change = -5
+                if event.key == pygame.K_RIGHT:
+                    x_change = 5
+            if event.type == pygame.KEYUP:
+                if event.key in [pygame.K_LEFT, pygame.K_RIGHT]:
+                    x_change = 0
+
+        # Update car position
+        x += x_change
+
+        # Keep car within screen boundaries
+        if x <= 0:
+            x = 0
+        if x >= WIDTH - car_width:
+            x = WIDTH - car_width
+
+        # Draw car and obstacles
+        draw_car(x, y)
+        draw_obstacle(obs_x, obs_y, obs_width, obs_height)
+
+        # Update obstacle position
+        obs_y += obs_speed
+
+        # Reset obstacle when it moves off-screen
+        if obs_y > HEIGHT:
+            obs_y = -obs_height
+            obs_x = random.randint(0, WIDTH - obs_width)
+            obs_speed += 1  # Increase difficulty
+            score += 1  # Increment score
+
+        # Check collision
+        if y < obs_y + obs_height and y + car_height > obs_y:
+            if x < obs_x + obs_width and x + car_width > obs_x:
+                display_message("You Crashed!", 75, BLACK, WIDTH // 2 - 150, HEIGHT // 2 - 50)
+                pygame.display.update()
+                pygame.time.wait(2000)
+                running = False
+
+        # Display score
+        display_message(f"Score: {score}", 35, WHITE, 10, 10)
+
+        # Update screen
+        pygame.display.update()
+
+        # Frame rate
+        clock.tick(60)
+
+    pygame.quit()
+
+# Start the game
+game_loop()
