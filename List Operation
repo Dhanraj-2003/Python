@@ -1,0 +1,6 @@
+my_list = []
+for _ in range(3):
+    item = input("Enter a list item: ")
+    my_list.append(item)
+print("List after appending:", my_list)
+my_list.pop
