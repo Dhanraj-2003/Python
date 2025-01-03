@@ -1,0 +1,20 @@
+# Prompt the user for the filename
+file_name = input("Enter the name of the text file (with extension): ")
+
+# Open the file and read its content
+with open(file_name, 'r') as file:
+    content = file.read()
+
+# Split the content into words
+words = content.split()
+
+# Convert words to a set to get unique words
+unique_words = set(words)
+
+# Sort the unique words alphabetically
+sorted_words = sorted(unique_words)
+
+# Print the sorted unique words
+print("Unique words in alphabetical order:")
+for word in sorted_words:
+    print(word)
