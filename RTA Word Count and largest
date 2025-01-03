@@ -1,0 +1,5 @@
+# Real-time input for a sentence
+sentence = input("Enter a sentence: ")
+words = sentence.split()
+print("Word count:", len(words))
+print("Longest word:", max(words, key=len))
