@@ -1,0 +1,6 @@
+library = []
+n = int(input("Enter the number of items in the library: "))
+for i in range(n):
+    item = input(f"Enter item {i + 1}: ")
+    library.append(item)
+print("Library items:", library)
