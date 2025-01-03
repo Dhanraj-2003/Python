@@ -1,5 +1,11 @@
-string1 = input("Enter first string: ")
-string2 = input("Enter second string: ")
-combined = string1 + " " + string2
-print("Concatenated String:", combined)
-print("Substring (first 5 characters):", combined[:5])
+string1 = input("Enter the first string: ")
+string2 = input("Enter the second string: ")
+
+# Concatenate
+combined_string = string1 + " " + string2
+print("Combined String:", combined_string)
+
+# Access substring
+start = int(input("Enter start index for substring: "))
+end = int(input("Enter end index for substring: "))
+print("Substring:", combined_string[start:end])
