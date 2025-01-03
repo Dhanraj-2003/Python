@@ -1,0 +1,14 @@
+# Input the lengths of the three sides of the triangle
+side1 = float(input("Enter the length of the first side: "))
+side2 = float(input("Enter the length of the second side: "))
+side3 = float(input("Enter the length of the third side: "))
+
+# Sort the sides to identify the hypotenuse (largest side)
+sides = [side1, side2, side3]
+sides.sort()
+
+# Use the Pythagorean theorem to check if it's a right-angled triangle
+if sides[0]**2 + sides[1]**2 == sides[2]**2:
+    print("The triangle is a right-angled triangle.")
+else:
+    print("The triangle is not a right-angled triangle.")
