@@ -1,6 +1,18 @@
+# Create a list
 my_list = []
-for _ in range(3):
-    item = input("Enter a list item: ")
+
+# Append items
+n = int(input("How many items to add to the list? "))
+for _ in range(n):
+    item = input("Enter an item: ")
     my_list.append(item)
+
 print("List after appending:", my_list)
-my_list.pop
+
+# Remove an item
+remove_item = input("Enter an item to remove: ")
+if remove_item in my_list:
+    my_list.remove(remove_item)
+    print("List after removing:", my_list)
+else:
+    print("Item not found in the list.")
