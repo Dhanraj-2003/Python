@@ -1,0 +1,5 @@
+colors = ("Red", "Green", "Blue")
+print("First color:", colors[0])
+print("Last color:", colors[-1])
+if "Green" in colors:
+    print("Green is in the tuple.")
